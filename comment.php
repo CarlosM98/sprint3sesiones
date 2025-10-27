@@ -33,7 +33,7 @@
         echo mysqli_insert_id($db);
         echo "añadido</p>";
 
-        echo "<a href='/detail.php?libro_id=".$libro_id."'>Volver</a>";
+        echo "<a href='/detail.php?id=".$libro_id."'>Volver</a>";
         mysqli_close($db);
 
         ?>
