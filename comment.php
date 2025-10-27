@@ -15,11 +15,17 @@
 </head>
 <body>
     <?php 
+        session_start();
+        $user_id_a_insertar = 'NULL';
+        if(!empty($_SESSION['user_id'])){
+                $user_id_a_insertar = $_SESSION['user_id'];
+        }
+
         $libro_id = $_POST['libro_id'];
         $comentario = $_POST['new_comment'];
 
         $fecha_actual = date('Y-m-d');
-        $query = "insert into tComentarios(comentario, usuario_id, libro_id, fecha_coment) values('$comentario' ,NULL, $libro_id, '$fecha_actual')";
+        $query = "insert into tComentarios(comentario, usuario_id, libro_id, fecha_coment) values('$comentario' ,$user_id_a_insertar, $libro_id, '$fecha_actual')";
 
         mysqli_query($db, $query) or die('Queryerror');
 

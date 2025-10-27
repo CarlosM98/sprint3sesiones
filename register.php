@@ -3,28 +3,38 @@
         
         echo 'Conexion exitosa';
 
+        $nombre = trim($_POST['nombre']);
+        $apellido = trim($_POST['apellido']);
         $email = trim($_POST['u_email']);
         $passw = trim($_POST['u_pssw']);
+        $confirm_passw = trim($_POST['u_pssw2']);
 
-
-        if(empty($email) || empty($passw)){
-            echo "<p>Todos loscampos son obligatorios.</p>";
+        if(empty($email) || empty($passw) || empty($nombre) || empty($apellido)){
+            echo "<p>Todos los campos son obligatorios.</p>";
             exit;
         }
 
-        $query = "select id, contrasenha from tUsuarios where email = '".$email."'";
+        if($passw != $confirm_passw){
+            echo "<p>La contraseña no coincide.</p>";
+            exit;
+        }
+
+        $query = "select id from tUsuarios where email = '$email'";
         $result = mysqli_query($db, $query) or die('Query error.');
 
         if(mysqli_num_rows($result) > 0){
-            $only_row = mysqli_fetch_array($result);
-            if((password_verify($passw, $only_row[1]))){
-                session_start();
-                $_SESSION['user_id'] = $only_row[0];
-                header('Location: main.php');
-            }else{
-                echo "<p>contraseña incorrecta.</p>";
-            }
+            echo "<p>Ya existe un usuario con ese correo.</p>";
+            exit;
+        }
+
+        $password_hash = password_hash($passw, PASSWORD_DEFAULT);
+        $query_insert = "insert into tUsuarios(nombre, apellidos, email, contrasenha) values('$nombre', '$apellido', '$email', '$password_hash') ";
+        $result_insert = mysqli_query($db, $query_insert);
+
+        if($result_insert){
+            header('Location: main.php');
+            exit;
         }else{
-            echo "<p>Usuario no encontrado con ese email.</p>";
+            echo "<p>Error al registrar usuario.</p>";
         }
 ?>

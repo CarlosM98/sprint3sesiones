@@ -32,10 +32,10 @@
         </head>
         <body>
                 <?php
-                 if(!isset($_GET['libro_id'])){
+                 if(!isset($_GET['id'])){
                         die('No se ha especificado una canción.');
                  }
-                 $libro_id = $_GET['libro_id'];
+                 $libro_id = $_GET['id'];
                  $query = 'select * from tLibros where id ='.$libro_id;
                  $resultado = mysqli_query($db, $query) or die('Queryerror');
                  $only_row = mysqli_fetch_array($resultado);
@@ -51,7 +51,7 @@
 
                  <ul>
                         <?php
-                        $query2 = 'select * from tComentarios where libro_id ='.$libro_id;
+                        $query2 = 'select * from tComentarios where id ='.$libro_id;
                         $resultado2 =  mysqli_query($db, $query2) or die('Query error');
                         echo '<br>';
                         while($row = mysqli_fetch_array($resultado2)){
