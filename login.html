@@ -12,7 +12,7 @@
     });
 
     function validarFormulario(evento) {
-      evento.preventDefault(); // Evita envío inmediato
+      evento.preventDefault();
 
       const usuario = document.getElementById("u_email").value.trim();
       const clave = document.getElementById("u_pssw").value;
@@ -24,7 +24,7 @@
       }
 
       if (clave.length < 4) {
-        alert("La clave no es válida (mínimo 6 caracteres)");
+        alert("La clave no es válida (mínimo 4 caracteres)");
         return;
       }
 
