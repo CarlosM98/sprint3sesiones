@@ -8,7 +8,7 @@
         return $peso / ($altura * $altura);
       }
 
-      if (isset($_GET["peso"]) && isset($_GET["altura"])) {
+      if (isset($_GET["edad"]) && isset($_GET["peso"]) && isset($_GET["altura"])) {
         $peso = $_GET["peso"];
         $altura = $_GET["altura"];
         $imc = calcular_imc($peso, $altura);
@@ -21,7 +21,7 @@
           echo "IMC: " . $imc . " → Sobrepeso";
         }
       } else {
-        echo "Proporciona peso y altura por GET.";
+        echo "Proporciona edad peso y altura por GET.";
       }
     ?>
     </p>
