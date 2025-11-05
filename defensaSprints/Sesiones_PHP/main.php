@@ -41,16 +41,18 @@ if (!empty($_SESSION['user_id'])) {
   echo '    <a href="/register.html">Registro</a>';
   echo '    <a href="/login.html">Login</a>';
 }
+
+
 echo '  </nav>';
 echo '</header>';
 /*Haz que se listen todas las canciones*/
 echo '<div class="list">';
-while () {
-  echo '  <a class="item" href="/detail.php?cancion_id=' .  . '">';
-  echo '    <img class="thumb" src="' . . '" alt="cover">';
+while($row = mysqli_fetch_array($result)){
+  echo '  <a class="item" href="/detail.php?cancion_id=' .$row['titulo']. '">';
+  echo '    <img class="thumb" src="' . $row['url_imagen']. '" alt="cover">';
   echo '    <div>';
-  echo '      <h3 class="title">' .  . '</h3>';
-  echo '      <p class="artist">' .  . '</p>';
+  echo '      <h3 class="title">' . $row['titulo'] . '</h3>';
+  echo '      <p class="artist">' . $row['autor'] . '</p>';
   echo '    </div>';
   echo '  </a>';
 }

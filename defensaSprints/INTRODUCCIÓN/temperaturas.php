@@ -2,6 +2,7 @@
 <html>
   <body>
     <h1>Conversión de temperaturas</h1>
+        
     <?php
     /* Arregla el código para que convierta las temperaturas */
     
