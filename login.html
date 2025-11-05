@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- <script>
+        console.log("Cargado");
+    document.addEventListener("DOMContentLoaded", function() {
+      const form = document.getElementById("formulario");
+      form.addEventListener("submit", validarFormulario);
+    });
+
+    function validarFormulario(evento) {
+      evento.preventDefault();
+
+      const usuario = document.getElementById("u_email").value.trim();
+      const clave = document.getElementById("u_pssw").value;
+
+      if (usuario.length === 0) {
+        alert("No has escrito nada en el usuario");
+        console.log("No has escrito nada en el usuario");
+        return;
+      }
+
+      if (clave.length < 4) {
+        alert("La clave no es válida (mínimo 4 caracteres)");
+        return;
+      }
+
+      alert("Formulario válido. Enviando...");
+
+    }
+  </script> -->
+</head>
+<body>
+    <form action="login.php" method="post" id="formulario">
+        <input type="text" id= "u_email" name="u_email" placeholder="xxxx@gmail.com"> <br>
+        <input type="password" id= "u_pssw" name="u_pssw" placeholder="12dfD." > <br>
+        <input type="submit" id= "submit" value="Iniciar sesión">
+    </form>
+</body>
+</html>
